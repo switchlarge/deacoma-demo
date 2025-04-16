@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DEACOMA Demo</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #333;
+      border: 2px solid #5effb5;
+      border-radius: 16px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 10px #5effb5;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .health-bar {
+      background-color: #444;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .health {
+      height: 20px;
+      background-color: #5effb5;
+      width: 100%;
+      transition: width 0.5s ease-in-out;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #5effb5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #34e9a1;
+    }
+  </style>
 </head>
 <body>
-  <h1>DEACOMA Demo'ya Hoş Geldiniz</h1>
-  <p>Bu, GitHub Pages üzerinden yayınlanan basit bir demo sayfasıdır.</p>
+  <h1>DEACOMA Mini Demo</h1>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x180.png?text=Yeelo" alt="Yeelo" />
+    <h2>Yeelo</h2>
+    <p>Birleşme Sağlığı: <span id="hpValue">100</span></p>
+    <div class="health-bar">
+      <div class="health" id="healthBar"></div>
+    </div>
+    <button onclick="attack()">Saldır</button>
+  </div>
+
+  <script>
+    let health = 100;
+
+    function attack() {
+      const damage = Math.floor(Math.random() * 20) + 5;
+      health = Math.max(health - damage, 0);
+      document.getElementById('healthBar').style.width = health + '%';
+      document.getElementById('hpValue').textContent = health;
+    }
+  </script>
 </body>
 </html>
